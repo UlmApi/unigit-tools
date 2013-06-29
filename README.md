@@ -1,3 +1,5 @@
 # Readme
 
-	$ make dir=pdf/MAWI/*.pdf
+	$ make all
+or
+	$ make specific dir=pdf/MAWI/*.pdf
