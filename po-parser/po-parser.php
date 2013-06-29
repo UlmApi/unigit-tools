@@ -14,7 +14,8 @@
 
     exec("mkdir tmp");
     exec("cp ".$argv[$j]." tmp");
-    exec("pdftohtml -c tmp/".$argv[$j]);
+    $path = pathinfo($argv[$j]);
+    exec("pdftohtml -c tmp/".$path['filename'].".pdf");
     exec("rename 's/-(\d)\.html/-0$1.html/g' tmp/*.html");
     $dir=scandir("tmp");
     $files = array();
@@ -77,15 +78,15 @@
           }
           $string = $paragraphs[$k]['text'][$sentence] ." ". strip_tags($P) ;
           $string = trim(preg_replace('/  +/', ' ', $string));
-          if ( substr($string , -1) === '-' ){
-            $string[strlen($string)-1] = ' ';
-          }
+          //if ( substr($string , -1) === '-' ){
+          //  $string[strlen($string)-1] = ' ';
+          //}
           $paragraphs[$k]['text'][$sentence] = $string;
         }
       }
     }
 
-    $fp = fopen('./'.$argv[$j].'.md', 'w');
+    $fp = fopen($path['filename'].'.md', 'w');
 
     $markdown = "";
 
@@ -96,14 +97,9 @@
       }
     }
 
-    //$fp = fopen('./fspo et.json', 'w');
-    //fwrite($fp, json_encode($paragraphs));
-
     fwrite($fp, $markdown);
     fclose($fp);
     
     exec("rm -rf tmp");
   }
-
-  exec("rename 's/pdf\.md/md/g' *");
 ?>
