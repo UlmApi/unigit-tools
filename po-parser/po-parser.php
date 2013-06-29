@@ -10,6 +10,7 @@
     return false;
   }
 
+  exec("mkdir md");
   for ($j = 1; $j<sizeof($argv); $j++){
 
     exec("mkdir tmp");
@@ -86,7 +87,7 @@
       }
     }
 
-    $fp = fopen($path['filename'].'.md', 'w');
+    $fp = fopen('./md/'.$path['filename'].'.md', 'w');
 
     $markdown = "";
 
