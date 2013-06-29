@@ -29,3 +29,7 @@ Directory structure:
 		vk = Vorklinischer Studienabschnitt
 		pj = Praktisches Jahr
 		
+	pdf/*/
+		ba = Bachelor
+		ma = Master
+		diplom = Diplom
