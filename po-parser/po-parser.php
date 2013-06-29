@@ -10,12 +10,21 @@
     return false;
   }
 
-  exec("mkdir md");
+  if (!is_dir("md/")) exec("mkdir md/");
+
   for ($j = 1; $j<sizeof($argv); $j++){
 
     exec("mkdir tmp");
     exec("cp ".$argv[$j]." tmp");
     $path = pathinfo($argv[$j]);
+
+    /* create specific subdirectory */
+    $subdir = pathinfo($path['dirname'])['filename'];
+    if (!is_dir("md/" . $subdir))
+	    exec("mkdir md/" . $subdir);
+	    //echo $subdir."\n";
+	//continue;
+
     exec("pdftohtml -c tmp/".$path['filename'].".pdf");
     exec("rename 's/-(\d)\.html/-0$1.html/g' tmp/*.html");
     $dir=scandir("tmp");
@@ -87,7 +96,7 @@
       }
     }
 
-    $fp = fopen('./md/'.$path['filename'].'.md', 'w');
+    $fp = fopen('./md/' . $subdir . '/' . $path['filename'] . '.md', 'w');
 
     $markdown = "";
 
