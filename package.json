@@ -1,0 +1,25 @@
+{
+  "name": "uulm-unigit-tools",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Tools to handle parsing and visualizing tasks for the unigit repository",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/UlmApi/unigit-tools.git"
+  },
+  "author": "Falco Nogatz <fnogatz@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/UlmApi/unigit-tools/issues"
+  },
+  "homepage": "https://github.com/UlmApi/unigit-tools",
+  "dependencies": {
+    "commander": "^2.3.0",
+    "require-all": "0.0.8",
+    "textract": "^0.15.0"
+  }
+}

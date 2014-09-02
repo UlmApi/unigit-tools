@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+var convert = require('../lib/index');
+
+program
+  .command('po [pdf]')
+  .description('parse Pruefungsordnung')
+  .action(pruefungsordnung);
+
+program
+  .version(require('../package.json').version);
+
+program.parse(process.argv);
+
+
+function pruefungsordnung(pdfFile, options) {
+  convert(pdfFile, {}, function(err, md) {
+    if (err) {
+      throw err;
+    }
+
+    console.log(md);
+  });
+}
